@@ -8,7 +8,7 @@ import {
   NavButton,
 } from './styled';
 
-const Slider = ({ images, show, margin }) => {
+const Slider = ({ images, show, margin, cardSlideWidth }) => {
   const [currentSlides, setCurrentSlides] = useState(show);
   const [translateX, setTranslateX] = useState(0);
   const [sliderWidth, setSliderWidth] = useState(0);
@@ -42,13 +42,20 @@ const Slider = ({ images, show, margin }) => {
 
   return (
     <ScrollContainer width={sliderWidth}>
-      <NavButton position="left" onClick={() => toggleSlide('left')} />
-      <SliderWrap translateX={translateX}>
+      <NavButton
+        position="left"
+        onClick={() => toggleSlide('left')}
+      />
+      <SliderWrap
+        translateX={translateX}
+        margin={margin}
+      >
         {images.map(image => (
           <Card
             key={image.id}
             ref={cardRef}
             margin={margin}
+            width={cardSlideWidth}
           >
             <img
               src={image.url}
@@ -58,7 +65,10 @@ const Slider = ({ images, show, margin }) => {
           </Card>
         ))}
       </SliderWrap>
-      <NavButton position="right" onClick={() => toggleSlide('right')} />
+      <NavButton
+        position="right"
+        onClick={() => toggleSlide('right')}
+      />
     </ScrollContainer>
   )
 }
@@ -67,6 +77,7 @@ Slider.defaultProps = {
   images: [],
   show: 3,
   margin: 15,
+  cardSlideWidth: 200,
 };
 
 Slider.propTypes = {
@@ -77,6 +88,7 @@ Slider.propTypes = {
   })).isRequired,
   show: PropTypes.number,
   margin: PropTypes.number,
+  cardSlideWidth: PropTypes.number,
 };
 
 export default Slider;

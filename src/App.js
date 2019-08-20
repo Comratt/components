@@ -2,6 +2,11 @@ import React from 'react'
 import { createGlobalStyle } from 'styled-components'
 
 import Slider from './components/Slider';
+import Autocomplete from './components/Autocomplete';
+import Icon from './components/Icon';
+import Search from './components/Search';
+import Ripple from './components/Ripple';
+import { Button } from './components/Ripple/styled';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -38,14 +43,62 @@ const App = props => {
       text: 'Lorem some 5'
     },
   ];
+
+  const items = [
+    {
+      id: 123,
+      name: 'Cat'
+    },
+    {
+      id: 141,
+      name: 'Dog'
+    },
+    {
+      id: 1425,
+      name: 'Elephant'
+    },
+    {
+      id: 412,
+      name: 'Bird'
+    },
+    {
+      id: 2412,
+      name: 'Turtle'
+    },
+    {
+      id: 3421,
+      name: 'Mouse'
+    },
+    {
+      id: 412,
+      name: 'Muse'
+    },
+  ];
   return (
     <>
       <GlobalStyle />
-      <Slider
-        images={images}
-        show={1}
-        margin={15}
-      />
+      <div style={{ display: 'none' }}>
+        <Slider
+          images={images}
+          show={3}
+          margin={15}
+          cardSlideWidth={200}
+        />
+      </div>
+      <div style={{ display: 'none' }}>
+        <Autocomplete items={items} limit={5} />
+      </div>
+      <div style={{ display: 'none' }}>
+        <Icon />
+      </div>
+      <div style={{ display: 'none' }}>
+        <Search />
+      </div>
+      <div>
+        <Ripple animationDuration={400}>
+          <Button>Click</Button>
+        </Ripple>
+      </div>
     </>
   )
 }

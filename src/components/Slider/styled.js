@@ -21,12 +21,12 @@ export const SliderWrap = styled.div`
   transform: translateX(${props => props.translateX}px);
   transition: .3s;
   & > div {
-    margin-right: 15px;
+  margin-right: ${props => props.margin}px;
   }
 `;
 
 export const Card = styled.div`
-  width: 200px;
+  width: ${props => props.width}px;
   height: 300px;
   border: 1px solid black;
   border-radius: 25px;
@@ -34,7 +34,7 @@ export const Card = styled.div`
   display: inline-flex;
   flex-direction: column;
   & > img {
-    width: 200px;
+    width: 100%;
     height: 150px;
   }
   & > span {
