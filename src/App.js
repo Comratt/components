@@ -7,6 +7,7 @@ import Icon from './components/Icon';
 import Search from './components/Search';
 import Ripple from './components/Ripple';
 import { Button } from './components/Ripple/styled';
+import Menu from './components/Menu';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -94,10 +95,13 @@ const App = props => {
       <div style={{ display: 'none' }}>
         <Search />
       </div>
-      <div>
+      <div style={{ display: 'none' }}>
         <Ripple animationDuration={400}>
           <Button>Click</Button>
         </Ripple>
+      </div>
+      <div>
+        <Menu />
       </div>
     </>
   )
