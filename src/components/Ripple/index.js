@@ -1,39 +1,68 @@
-import React, { useState, useRef } from 'react';
+// Absolute imports
+import React, { Component } from 'react';
 
+// Styled
 import {
   RippleWrap,
   RippleCircle
 } from './styled';
 
-const Ripple = ({ children, animationDuration }) => {
+class Ripple extends Component
+{
+  constructor(props) {
+    super(props);
+    this.state = {
+      animations: [],
+      size: {
+        width: 20,
+        height: 20,
+      }
+    }
 
-  const circleRef = useRef(null);
-  const [animations, setAnimations] = useState([]);
+    this.id = 0;
+  }
 
-  const toggleClick = e => {
-    console.log(e.target)
-    const x = e.clientX - e.target.getBoundingClientRect().left;
-    const y = e.clientY - e.target.getBoundingClientRect().top;
-    setAnimations(() => [...animations, { x, y }]);
-    setTimeout(() => setAnimations([]), animationDuration);
+  toggleClick = e => {
+    const id = this.id++;
+    const elementSize = e.target.getBoundingClientRect();
+    const x = e.clientX - elementSize.left - (elementSize.width / 2);
+    const y = e.clientY - elementSize.top - (elementSize.height / 2);
+    this.setState(prevState => ({
+      animations: [...prevState.animations, { x, y, id }],
+      size: {
+        width: elementSize.width,
+        height: elementSize.height,
+      }
+    }), () => {
+      setTimeout(() => this.setState(prevState => ({
+        animations: prevState.animations.filter(animation => animation.id !== id)
+      })), this.props.animationDuration)
+    });
   };
 
-  return (
-    <RippleWrap
-      onClick={toggleClick}
-    >
-      {children}
-      {animations.map((elem, indx) => (
-        <RippleCircle
-          key={indx}
-          x={elem.x}
-          y={elem.y}
-          ref={circleRef}
-          animationDuration={animationDuration}
-        />
-      ))}
-    </RippleWrap>
-  )
+  render() {
+    const { children, animationDuration } = this.props;
+    const { animations, size } = this.state;
+
+    const circleSize = Math.max(size.height, size.width);
+
+    return (
+      <RippleWrap
+        onClick={this.toggleClick}
+      >
+        {children}
+        {animations.map(elem => (
+          <RippleCircle
+            key={elem.id}
+            x={elem.x}
+            y={elem.y}
+            size={circleSize}
+            animationDuration={animationDuration}
+          />
+        ))}
+      </RippleWrap>
+    )
+  }
 };
 
 export default Ripple;

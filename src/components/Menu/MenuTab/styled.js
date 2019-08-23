@@ -7,7 +7,6 @@ const activeTab = css`
   z-index: 10!important;
   cursor: default;
   margin-bottom: -1px;
-  margin-left: 10px;
 `;
 
 const tabSide = css`
@@ -69,6 +68,7 @@ export const IconWrap = styled.div`
 
 export const TabClose = styled.div`
   position: absolute;
+  z-index: 100;
   right: 30px;
   bottom: 10px;
   width: 10px;
@@ -87,21 +87,6 @@ export const TabContentCenter = styled.div`
   background-position: bottom;
   width: 100%;
   min-width: 40px;
-  ${TabTitle} {
-    ${props => props.active && `bottom: 10px`};
-  }
-  ${TabClose} {
-    ${props => props.active && `
-      right: 25px;
-      bottom: 15px;
-    `};
-  }
-  ${IconWrap} {
-    ${props => props.active && `
-      left: 25px;
-      bottom: 17px;
-    `}
-  }
 `;
 
 export const TabWrap = styled.div`
@@ -110,11 +95,28 @@ export const TabWrap = styled.div`
   display: flex;
   z-index: 1;
   margin-left: -35px;
-  ${props => props.active && activeTab};
-  ${TabContentRight} {
-    ${props => props.active && activeBckg };
-  }
-  ${TabContentLeft} {
-    ${props => props.active && activeBckg};
-  }
+  cursor: pointer;
+  ${props => props.active && `
+    ${activeTab};
+    ${TabContentRight} {
+      ${activeBckg};
+    }
+    ${TabContentLeft} {
+      ${activeBckg};
+    }
+    ${TabContentCenter} {
+      ${activeBckg};
+      ${TabTitle} {
+        bottom: 10px;
+      }
+      ${TabClose} {
+        right: 25px;
+        bottom: 15px;
+      }
+      ${IconWrap} {
+        left: 25px;
+        bottom: 17px;
+      }
+    }
+  `};
 `;

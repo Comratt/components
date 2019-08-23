@@ -22,4 +22,7 @@ export const MenuTabs = styled.section`
   width: 100%;
   height: 45px;
   overflow: hidden;
+  & > div:first-child {
+    margin-left: 10px;
+  }
 `;

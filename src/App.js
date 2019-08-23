@@ -95,12 +95,12 @@ const App = props => {
       <div style={{ display: 'none' }}>
         <Search />
       </div>
-      <div style={{ display: 'none' }}>
-        <Ripple animationDuration={400}>
+      <div>
+        <Ripple animationDuration={600}>
           <Button>Click</Button>
         </Ripple>
       </div>
-      <div>
+      <div style={{ display: 'none' }}>
         <Menu />
       </div>
     </>

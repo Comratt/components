@@ -12,18 +12,21 @@ import {
 
 import TabIcon from '../Icons/TabIcon';
 
-const MenuTab = ({ active }) => {
+const MenuTab = ({ active, setActive, onClose }) => {
   return (
-    <TabWrap active={active}>
+    <TabWrap
+      active={active}
+      onClick={setActive}
+    >
       <TabContentLeft />
-      <TabContentCenter active={active}>
+      <TabContentCenter>
         <IconWrap>
           <TabIcon fill="#fff" />
         </IconWrap>
         <TabTitle>
           <span>Beratung > Vetter, Gustav</span>
         </TabTitle>
-        <TabClose />
+        <TabClose onClick={onClose} />
       </TabContentCenter>
       <TabContentRight />
     </TabWrap>
