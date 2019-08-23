@@ -13,28 +13,32 @@ export const Group = styled.div`
   margin-bottom: 30px;
   & > svg {
     position: absolute;
-    top: 15px;
+    bottom: 10px;
   }
   & > button {
     position: absolute;
-    top: 15px;
-    left: 270px;
+    bottom: 10px;
+    right: 0px;
   }
 `;
 
 export const Input = styled.input`
   font-size: 16px;
-  padding: 10px 10px 15px 30px;
+  padding: 10px 80px 5px 30px;
   background: none;
   display: block;
-  width: 300px;
+  width: calc(100% - 110px);
   border: none;
   border-bottom: 1px solid #fff;
+  color: #fff;
+  font-size: 18px;
+  &::placeholder {
+    color: #fff;
+    font-size: 18px;
+  }
   &:focus {
     outline: none;
-    ${inputActive}
   }
-  ${props => Boolean(props.value) && inputActive}
 
   &:focus ~ span:before,
   &:focus ~ span:after {
@@ -47,15 +51,13 @@ export const Label = styled.label`
   font-size: 18px;
   position: absolute;
   pointer-events: none;
-  left: 30px;
-  top: 15px;
   transition: 0.2s ease all;
 `;
 
 export const Bar = styled.span`
   position: relative;
   display: block;
-  width: 340px;
+  width: 100%;
   &:before, &:after {
     content: "";
     height: 2px;
@@ -80,4 +82,6 @@ export const Button = styled.button`
   text-transform: uppercase;
   border: none;
   font-size: 16px;
+  margin: 0;
+  padding: 0;
 `;

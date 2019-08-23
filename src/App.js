@@ -75,6 +75,9 @@ const App = props => {
       name: 'Muse'
     },
   ];
+
+  const onSubmit = phrase => console.log(phrase);
+
   return (
     <>
       <GlobalStyle />
@@ -92,10 +95,13 @@ const App = props => {
       <div style={{ display: 'none' }}>
         <Icon />
       </div>
-      <div style={{ display: 'none' }}>
-        <Search />
-      </div>
       <div>
+        <Search
+          onSubmit={onSubmit}
+          placeholder="Vorname, Nachname, Beratungsname"
+        />
+      </div>
+      <div style={{ display: 'none' }}>
         <Ripple
           animationDuration={600}
           color="#eee"

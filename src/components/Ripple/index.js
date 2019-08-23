@@ -44,7 +44,6 @@ class Ripple extends Component
   render() {
     const { children, animationDuration, color, shadow } = this.props;
     const { animations, circleSize } = this.state;
-    console.log(Object.getOwnPropertyNames(children))
     return (
       <RippleWrap
         onClick={this.toggleClick}
