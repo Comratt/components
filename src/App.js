@@ -96,7 +96,11 @@ const App = props => {
         <Search />
       </div>
       <div>
-        <Ripple animationDuration={600}>
+        <Ripple
+          animationDuration={600}
+          color="#eee"
+          shadow
+        >
           <Button>Click</Button>
         </Ripple>
       </div>

@@ -13,42 +13,42 @@ class Ripple extends Component
     super(props);
     this.state = {
       animations: [],
-      size: {
-        width: 20,
-        height: 20,
-      }
-    }
+      circleSize: 0,
+    };
 
     this.id = 0;
   }
 
   toggleClick = e => {
     const id = this.id++;
+
     const elementSize = e.target.getBoundingClientRect();
-    const x = e.clientX - elementSize.left - (elementSize.width / 2);
-    const y = e.clientY - elementSize.top - (elementSize.height / 2);
+    const circleSize = Math.max(elementSize.height, elementSize.width);
+
+    const x = e.clientX - elementSize.left - (circleSize / 2);
+    const y = e.clientY - elementSize.top - (circleSize / 2);
+
     this.setState(prevState => ({
-      animations: [...prevState.animations, { x, y, id }],
-      size: {
-        width: elementSize.width,
-        height: elementSize.height,
-      }
+      animations: [
+        ...prevState.animations,
+        { x, y, id }
+      ],
+      circleSize
     }), () => {
       setTimeout(() => this.setState(prevState => ({
-        animations: prevState.animations.filter(animation => animation.id !== id)
-      })), this.props.animationDuration)
+        animations: prevState.animations.filter(animation => animation.id !== id),
+      })), this.props.animationDuration);
     });
   };
 
   render() {
-    const { children, animationDuration } = this.props;
-    const { animations, size } = this.state;
-
-    const circleSize = Math.max(size.height, size.width);
-
+    const { children, animationDuration, color, shadow } = this.props;
+    const { animations, circleSize } = this.state;
+    console.log(Object.getOwnPropertyNames(children))
     return (
       <RippleWrap
         onClick={this.toggleClick}
+        shadow={shadow}
       >
         {children}
         {animations.map(elem => (
@@ -57,6 +57,7 @@ class Ripple extends Component
             x={elem.x}
             y={elem.y}
             size={circleSize}
+            color={color}
             animationDuration={animationDuration}
           />
         ))}
