@@ -1,12 +1,4 @@
-import styled, { css } from 'styled-components';
-
-const inputActive = css`
-  & ~ label {
-    top: -15px;
-    font-size: 14px;
-    color: #fff;
-  }
-`;
+import styled from 'styled-components';
 
 export const Group = styled.div`
   position: relative;
@@ -35,6 +27,7 @@ export const Input = styled.input`
   &::placeholder {
     color: #fff;
     font-size: 18px;
+    opacity: .9;
   }
   &:focus {
     outline: none;
@@ -44,14 +37,6 @@ export const Input = styled.input`
   &:focus ~ span:after {
     width: 50%;
   }
-`;
-
-export const Label = styled.label`
-  color: #fff;
-  font-size: 18px;
-  position: absolute;
-  pointer-events: none;
-  transition: 0.2s ease all;
 `;
 
 export const Bar = styled.span`
