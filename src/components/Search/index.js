@@ -22,7 +22,7 @@ class Search extends Component
   doSearch = () =>  {
     const { value } = this.state;
 
-    if(!value.length || (value.length >= 2)) {
+    if(!value.length || (value.length >= 3)) {
       this.props.onSubmit(value);
       clearTimeout(this.state.timer);
       this.setState({ timer: null });
@@ -36,14 +36,22 @@ class Search extends Component
     this.setState({ timer: setTimeout(this.doSearch, this.interval) });
   };
 
+  formSubmit = e => {
+    e.preventDefault();
+    this.doSearch();
+  }
+
   handleChange = e => this.setState({ value: e.target.value });
 
   render() {
     return (
-      <div style={{
-        width: '40%',
-        margin: '15px'
-      }}>
+      <form
+        style={{
+          width: '90%',
+          margin: '15px'
+        }}
+        onSubmit={this.formSubmit}
+      >
         <Group>
           <SearchIcon height="18px" fill="#fff" />
           <Input
@@ -57,7 +65,7 @@ class Search extends Component
           <Bar />
           <Button>SUCHEN</Button>
         </Group>
-      </div>
+      </form>
     )
   }
 }

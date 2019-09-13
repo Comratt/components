@@ -8,6 +8,7 @@ import Search from './components/Search';
 import Ripple from './components/Ripple';
 import { Button } from './components/Ripple/styled';
 import Menu from './components/Menu';
+import DragMain from './components/Draggy/DragMain';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -76,7 +77,9 @@ const App = props => {
     },
   ];
 
-  const onSubmit = phrase => console.log(phrase);
+  const onSubmit = phrase => {
+    console.log(phrase)
+  }
 
   return (
     <>
@@ -95,7 +98,7 @@ const App = props => {
       <div style={{ display: 'none' }}>
         <Icon />
       </div>
-      <div>
+      <div id="search" style={{ display: 'none' }}>
         <Search
           onSubmit={onSubmit}
           placeholder="Vorname, Nachname, Beratungsname"
@@ -104,7 +107,7 @@ const App = props => {
       <div style={{ display: 'none' }}>
         <Ripple
           animationDuration={600}
-          color="#eee"
+          color="#000"
           shadow
         >
           <Button>Click</Button>
@@ -112,6 +115,9 @@ const App = props => {
       </div>
       <div style={{ display: 'none' }}>
         <Menu />
+      </div>
+      <div>
+        <DragMain />
       </div>
     </>
   )

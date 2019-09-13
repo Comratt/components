@@ -10,18 +10,18 @@ import MenuTab from './MenuTab';
 
 import MenuLogo from './Icons/MenuLogo';
 
-const recurseFind = (arr, key) => {
-  if(arr[0].key < key) {
-    return arr[0];
-  }
+// const recurseFind = (arr, key) => {
+//   if(arr[0].key < key) {
+//     return arr[0];
+//   }
 
-  const decreaseKey = arr.find(item => item.key === key - 1);
-  if( typeof decreaseKey === 'object') {
-    return decreaseKey;
-  }
+//   const decreaseKey = arr.find(item => item.key === key - 1);
+//   if( typeof decreaseKey === 'object') {
+//     return decreaseKey;
+//   }
 
-  return recurseFind(arr, key - 1);
-}
+//   return recurseFind(arr, key - 1);
+// }
 
 class Menu extends Component
 {

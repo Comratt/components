@@ -6,7 +6,7 @@ const circleAnimation = keyframes`
     opacity: .5;
   }
   10% {
-    opacity: .75;
+    opacity: .8;
   }
   98% {
     opacity: 0.02
@@ -15,7 +15,7 @@ const circleAnimation = keyframes`
     opacity: 0.01
   }
   100% {
-    transform: scale(1.75);
+    transform: scale(2.5);
     opacity: 0;
   }
 `;
@@ -51,13 +51,15 @@ export const RippleWrap = styled.div`
   overflow: hidden;
   display: inline-block;
   z-index: 2;
+  border-radius: 50%;
   cursor: pointer;
   ${props => props.shadow && rippleShadow};
 `;
 
 export const Button = styled.button`
-  height: 300px;
-  width: 600px;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
   background-color: #fcfc;
   border: none;
   cursor: pointer;

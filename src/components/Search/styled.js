@@ -67,6 +67,7 @@ export const Button = styled.button`
   text-transform: uppercase;
   border: none;
   font-size: 16px;
+  line-height: 0.7;
   margin: 0;
   padding: 0;
 `;
